@@ -1,0 +1,591 @@
+<meta charset="utf-8" />
+
+<div class="control-panel">
+  <h2>OBIEKTY</h2>
+
+  <button class="btn">SŁOŃCE</button>
+  <button class="btn">MERKURY</button>
+  <button class="btn">WENUS</button>
+  <button class="btn">ZIEMIA</button>
+  <button class="btn">MARS</button>
+  <button class="btn">JOWISZ</button>
+  <button class="btn">SATURN</button>
+  <button class="btn">URAN</button>
+  <button class="btn">NEPTUN</button>
+</div>
+
+<div class="space">
+  <div id="sun"></div>
+
+  <div class="orbit" id="MerkuryOrbit"></div>
+  <div class="planet" id="Merkury"></div>
+
+  <div class="orbit" id="WenusOrbit"></div>
+  <div class="planet" id="Wenus"></div>
+
+  <div class="orbit" id="ZiemiaOrbit"></div>
+  <div class="planet" id="Ziemia"></div>
+
+  <div class="orbit" id="MarsOrbit"></div>
+  <div class="planet" id="Mars"></div>
+
+  <div class="orbit" id="JowiszOrbit"></div>
+  <div class="planet" id="Jowisz"></div>
+
+  <div class="orbit" id="SaturnOrbit"></div>
+  <div class="planet" id="Saturn"></div>
+
+  <div class="orbit" id="UranOrbit"></div>
+  <div class="planet" id="Uran"></div>
+
+  <div class="orbit" id="NeptunOrbit"></div>
+  <div class="planet" id="Neptun"></div>
+</div>
+
+<div>
+  Czas <text id="czas"></text>s<br />
+  POSIX <text id="posix"></text>s<br />
+  Stopnie <text id="stopien"></text>°<br />
+  Lata <text id="lata"></text>lat<br />
+  PROPORCJA<text id="proporcja"></text><br />
+  <button id="timetravelbutton">TIME TRAVEL!</button>
+</div>
+<style>
+  button::-moz-focus-inner {
+    /* zeby nie bylo na przyciskach kropkowanej granicy*/
+    border: 0;
+  }
+
+  .control-panel {
+    margin: none;
+    background-color: rgb(65, 65, 65);
+    padding: 3px;
+    height: 100vh;
+    overflow-y: auto;
+
+    visibility: visible;
+  }
+
+  .control-panel h2 {
+    margin: none;
+    font-family: sans-serif;
+    font-size: 17px;
+    margin-left: 10px;
+  }
+  .btn {
+    display: block;
+    margin: 10px;
+    background-color: rgb(83, 83, 83);
+    border: none;
+
+    padding: 20px;
+    width: 160px;
+    font-size: 13x;
+    font-family: sans-serif;
+    font-weight: 600;
+
+    color: white;
+    box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.4);
+    outline: none;
+    transition-duration: 100ms;
+    border-radius: 3%;
+  }
+  .btn:hover {
+    background-color: rgb(160, 52, 145);
+    color: rgb(255, 255, 255);
+    transform: translateX(10px);
+    transition-duration: 100ms;
+  }
+  .btn:active {
+    background-color: rgb(255, 255, 255);
+    color: rgba(124, 49, 139, 0.616);
+  }
+
+  body {
+    overflow: hidden;
+    margin: 0px;
+    background-color: black;
+    color: white;
+
+    display: flex;
+    justify-content: left;
+    font-family: sans-serif;
+  }
+  label {
+    position: relative;
+    font-family: sans-serif;
+    left: 20px;
+    bottom: 20px;
+    font-size: 12px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    z-index: 3;
+  }
+
+  .space {
+    background-color: rgba(0, 0, 0, 1);
+    background-image: url("stars.jpg");
+    background-repeat: no-repeat;
+    background-size: 130%;
+
+    height: 100vh;
+    width: 70%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .space > div {
+    position: fixed;
+    border-radius: 100%;
+  }
+  .planet {
+    font-family: sans-serif;
+    left: 20px;
+    bottom: 20px;
+    font-size: 12px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    z-index: 3;
+  }
+  .orbit {
+    border: dashed 4px #777;
+  }
+
+  #sun {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: darkorange;
+    box-shadow: inset -30px -30px 30px rgba(0, 0, 0, 0.3);
+    /* border: 2px solid chartreuse;
+    border-radius: 0%; */
+  }
+  #Merkury {
+    position: absolute;
+    justify-content: center;
+
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    box-shadow: inset -30px -30px 30px rgba(0, 0, 0, 0.2);
+    /* border: 2px solid chartreuse;
+    border-radius: 0%; */
+  }
+  #Wenus {
+    position: absolute;
+
+    width: 14px;
+    height: 10px;
+    background-color: darkorange;
+    box-shadow: inset -30px -30px 30px rgba(0, 0, 0, 0.2);
+    /* border: 2px solid chartreuse;
+    border-radius: 0%; */
+  }
+  #Ziemia {
+    position: absolute;
+
+    width: 23px;
+    height: 23px;
+    background-color: lightblue;
+
+    box-shadow: inset -30px -30px 30px rgba(0, 0, 0, 0.2);
+    /* border: 2px solid chartreuse;
+    border-radius: 0%; */
+  }
+</style>
+
+<script type="text/javascript">
+  // nazwa, masa, srednica, okresObiegu, okresObrotu, polozeniePoczatkowe, ciekawostki
+
+  var nachylenie = 1;
+  var czas = document.querySelector("#czas");
+  var posix = document.querySelector("#posix");
+  var stopien = document.querySelector("#stopien");
+  var lata = document.querySelector("#lata");
+  var proporcja = document.querySelector("#proporcja");
+
+  // na szczescie planety nie zaleza od siebie te ich ruchy pojebane
+  // im wieksza szerokosc danej planety tym wieksza niezgodnosc po skosie
+  // NA WIELKIE SZCZESCIE PO PROSTU planety sa reprezentowane przez wspolrzedne ktore dobrze sie poruszaja po orbitach lecz te wspolrzedne sa dokladnie lewym gornym rogiem tych planet
+
+  //co zrobic
+  //przesunac wspolrzedba rogowa x planety w lewo o pol szerokosci planety
+  //przesunac wspolrzedba rogowa y planety w gore o pol wysokosci planety,  wysokosc = szeroksoc wiec spoko
+
+  //todo rewdefine wartosci gdy scrollowane bylo /blok scrolla
+
+  //this reprezentuje obiekt który wywolal funkcje, arrow functons nie maja obiektu this
+
+  var sun = document.querySelector("#sun");
+  var p = sun.offsetLeft; //rog x           //offsety uratowaly mi nockę <3
+  var q = sun.offsetTop; //rog y
+  var sunSize = sun.offsetWidth; //width = height
+
+  console.log("Wspolrzedne w kacie slonca \n p=" + p + ", q=" + q);
+  console.log("\n szerokosc i wysokosc slonca =" + sunSize);
+  var CentralnaX = p + sunSize / 2; // wspolrzednie srodka slonca
+  var CentralnaY = q + sunSize / 2;
+
+  //element.left + element.width /2;
+  class SpaceObject {
+    //          asci   n        n     st      n          earth
+    constructor(
+      nazwa,
+      promien,
+      size,
+      dlugosc,
+      szerokosc,
+      okres,
+      color,
+      ciekawostka
+    ) {
+      this.nazwa = nazwa;
+      this.promien = promien;
+      this.size = size;
+
+      this.szerokoscSferyczna = szerokosc;
+
+      this.okres = okres;
+
+      this.dlugoscSferyczna = dlugosc % 360;
+      this.polozeniePoczatkowe = (this.dlugoscSferyczna * Math.PI) / 180;
+
+      this.color = color;
+      this.ciekawostka = ciekawostka;
+      this.element = document.querySelector("#" + nazwa);
+
+      this.x = 0;
+      this.y = 0;
+
+      this.centralne_x = CentralnaX; //wspolrzednie srodka obrotu SAMYCH planet
+      this.centralne_y = CentralnaY; // tu ze maja sie rownac wspolrzednym srodka slonca
+
+      this.elementOrbit = document.querySelector("#" + nazwa + "Orbit");
+
+      generatePlanet(this); //applies style to planets
+      genereateOrbit(this); //applies style to orbits
+      showLabel(this);
+    }
+
+    hideOrbit() {
+      this.elementOrbit.style.visibility = "hidden";
+    }
+  }
+  function generatePlanet(p) {
+    p.element.style.position = "absolute";
+    p.element.style.width = p.size;
+    p.element.style.height = p.size;
+    p.element.style.background = p.color;
+    p.element.style.boxShadow = "inset -30px -30px 30px rgba(0,0,0,0.3)";
+  }
+
+  function genereateOrbit(p) {
+    p.elementOrbit.style.width = nachylenie * p.promien * 2 + "px";
+    p.elementOrbit.style.height = p.promien * 2 + "px";
+  }
+
+  function showLabel(p) {
+    p.element.innerHTML = p.nazwa;
+  }
+
+  //const canvas = document.querySelector('#can');
+  //const ctx = canvas.getContext('2d');
+
+  // Draw the ellipse
+  //ctx.beginPath();
+  //ctx.ellipse(100, 100, 50, 75, Math.PI / 4, 0, 2 * Math.PI);
+  //ctx.stroke();
+
+  var okres_obrotu_ziemi = 31556925.9747; // [s] - liczba sekund w roku
+
+  //dlugosc sferyczna w stopniach
+
+  //nazwa promien rozmiar           dl.sf    szer.sf     okres w obrotach ziemi
+  var merkury = new SpaceObject(
+    "Merkury",
+    34,
+    8,
+    352.397,
+    5.812,
+    0.241 * okres_obrotu_ziemi,
+    "brown",
+    "Był gejem"
+  ); //ON SCALE UP DO THIS ONE MORE TIME
+  var wenus = new SpaceObject(
+    "Wenus",
+    45,
+    11,
+    304.881,
+    -2.532,
+    0.615071316 * okres_obrotu_ziemi,
+    "yellow"
+  );
+  var ziemia = new SpaceObject(
+    "Ziemia",
+    55,
+    13,
+    305.342,
+    0,
+    1.0 * okres_obrotu_ziemi,
+    "blue"
+  );
+  var mars = new SpaceObject(
+    "Mars",
+    90,
+    9,
+    34.451,
+    -0.483,
+    1.881 * okres_obrotu_ziemi,
+    "darkorange"
+  );
+  var jowisz = new SpaceObject(
+    "Jowisz",
+    160,
+    40,
+    24.994,
+    1.263,
+    11.862 * okres_obrotu_ziemi,
+    "pink"
+  );
+  var saturn = new SpaceObject(
+    "Saturn",
+    230,
+    30,
+    41.444,
+    -2.366,
+    29.457 * okres_obrotu_ziemi,
+    "yellow"
+  );
+  var uran = new SpaceObject(
+    "Uran",
+    250,
+    21,
+    7.104,
+    0.712,
+    84.013841 * okres_obrotu_ziemi,
+    "darkcyan"
+  );
+  var neptun = new SpaceObject(
+    "Neptun",
+    300,
+    21,
+    59.335,
+    1.683,
+    164.78 * okres_obrotu_ziemi,
+    "cyan"
+  );
+
+  //alert(merkury.ciekawostka)
+
+  // policzyc okres
+
+  //merkury.hideOrbit();
+
+  //testing final problem solver
+  var przesuniecie = merkury.element.offsetWidth / 2;
+
+  merkury.centralne_x -= przesuniecie;
+  merkury.centralne_y -= przesuniecie; // MAMY TO KURWA
+
+  wenus.centralne_x -= wenus.element.offsetWidth / 2;
+  wenus.centralne_y -= wenus.element.offsetWidth / 2;
+
+  ziemia.centralne_x -= ziemia.element.offsetWidth / 2;
+  ziemia.centralne_y -= ziemia.element.offsetWidth / 2;
+
+  mars.centralne_x -= mars.element.offsetWidth / 2;
+  mars.centralne_y -= mars.element.offsetWidth / 2;
+
+  jowisz.centralne_x -= jowisz.element.offsetWidth / 2;
+  jowisz.centralne_y -= jowisz.element.offsetWidth / 2;
+
+  saturn.centralne_x -= saturn.element.offsetWidth / 2;
+  saturn.centralne_y -= saturn.element.offsetWidth / 2;
+
+  uran.centralne_x -= uran.element.offsetWidth / 2;
+  uran.centralne_y -= uran.element.offsetWidth / 2;
+
+  neptun.centralne_x -= neptun.element.offsetWidth / 2;
+  neptun.centralne_y -= neptun.element.offsetWidth / 2;
+
+  //SEK
+  //    (1/3600)  *
+  // NA PEWNO MUSI BYC COS Z TYM okresEM
+
+  var data1970 = new Date("1970/01/01");
+  var dataAktualna = new Date();
+  var roznicaDat = Math.abs(dataAktualna - data1970); // [s]
+  var roznicaDatWSekundach = roznicaDat / 1000; // [ms]
+
+  var liczbaSekundWRoku = 31556925.9747;
+
+  console.log("Data początkowa\t\t", data1970);
+  console.log("Data aktualna\t\t", dataAktualna);
+  //console.log("Różnica dat w ms\t", roznicaDat,"ms");
+  console.log("Różnica dat w sekundach\t", roznicaDatWSekundach, "s");
+  console.log("Liczba sekund w roku (okres Ziemi)", liczbaSekundWRoku, "s");
+
+  ////var plusTime = roznicaDatWSekundach;//Math.floor(Date.now() / 1000); //czas posix w sekundach
+  //var seconds_in_a_year = 31556925.9747;  // liczba sekund w roku ziemskim
+  //console.log(Math.floor(roznicaDatWSekundach/seconds_in_a_year), "lat", Math.floor((roznicaDatWSekundach%seconds_in_a_year)/2629743.83), "miesiecy", Math.floor(roznicaDatWSekundach%seconds_in_a_year%2629743.83/86400), "dni" ,Math.floor(roznicaDatWSekundach%seconds_in_a_year%2629743.83%86400/3600), "godzin",Math.floor(roznicaDatWSekundach%seconds_in_a_year%2629743.83%86400%3600/60),"min",Math.floor(roznicaDatWSekundach%seconds_in_a_year%2629743.83%8640%3600%60),"sec" );
+
+  function przenies(obiekt, czas) {
+    // podajemy posix w sekundach
+    //todo okres normalny i wzgledny ziemski
+    var sekundy_w_stopniu = obiekt.okres / 360; // ile sekund zajmuje obiektowi przemierzenie 1 stopnia
+
+    //konwersja do stopni
+    var stopnie = czas / sekundy_w_stopniu; //czas / ilosc sekund przypadajacych na 1 stopien
+
+    console.log("stopnie", stopnie);
+
+    var reszta = stopnie % 360;
+    console.log("reszta", reszta);
+
+    obiekt.dlugoscSferyczna += reszta;
+    obiekt.dlugoscSferyczna %= 360;
+  }
+
+  function przeniesWszystko() {
+    przenies(merkury, roznicaDatWSekundach);
+    przenies(wenus, roznicaDatWSekundach);
+    przenies(ziemia, roznicaDatWSekundach);
+    przenies(mars, roznicaDatWSekundach);
+    przenies(jowisz, roznicaDatWSekundach);
+    przenies(saturn, roznicaDatWSekundach);
+    przenies(uran, roznicaDatWSekundach);
+    przenies(neptun, roznicaDatWSekundach);
+    var f = Date("1970/01/01");
+    console.log((f += roznicaDatWSekundach));
+  }
+
+  var przycisk = document.querySelector("#timetravelbutton");
+  //przeniesWszystko();
+  przycisk.addEventListener("click", przeniesWszystko);
+
+  function timeTravel(plusTime) {
+    var przesuniecie = plusTime % seconds_in_a_year;
+    var przesuniecie_deg = przesuniecie / 3600;
+    var przesuniecie_rad = (przesuniecie_deg * Math.PI) / 180;
+
+    merkury.dlugoscSferyczna += przesuniecie_deg / merkury.okres;
+    wenus.dlugoscSferyczna += przesuniecie_deg / wenus.okres;
+    mars.dlugoscSferyczna += przesuniecie_deg / ziemia.okres;
+    ziemia.dlugoscSferyczna += przesuniecie_deg / mars.okres;
+    jowisz.dlugoscSferyczna += przesuniecie_deg / jowisz.okres;
+    saturn.dlugoscSferyczna += przesuniecie_deg / saturn.okres;
+    uran.dlugoscSferyczna += przesuniecie_deg / uran.okres;
+    neptun.dlugoscSferyczna += przesuniecie_deg / neptun.okres;
+  }
+  //timeTravel(plusTime);
+  function moveToDate(time_sec) {
+    var time_deg = time_sec / 3600;
+
+    var full_turns = Math.floor(time_deg / 360);
+    var rest = time_deg % 360;
+
+    var time_rad = (Math.PI * time_deg) / 180;
+    if (time_sec > 0) {
+      console.log("czas do przeniesienia: +" + time_sec + "s");
+    } else if (time_sec < 0) {
+      console.log("czas do przeniesienia: -" + time_sec + "s");
+    } else {
+      //if time == 0, no moving
+      return;
+    }
+
+    console.log("co daje " + time_deg + "°");
+    console.log("czyli " + full_turns + " pelnych obrotow i " + rest + "°");
+
+    console.log(
+      merkury.dlugoscSferyczna +
+        " potem: " +
+        ((merkury.dlugoscSferyczna += rest) % 360)
+    );
+
+    merkury.dlugoscSferyczna += rest * merkury.okres;
+    wenus.dlugoscSferyczna += rest * wenus.okres;
+    mars.dlugoscSferyczna += rest * ziemia.okres;
+    ziemia.dlugoscSferyczna += rest * mars.okres;
+    jowisz.dlugoscSferyczna += rest * jowisz.okres;
+    saturn.dlugoscSferyczna += rest * saturn.okres;
+    uran.dlugoscSferyczna += rest * uran.okres;
+    neptun.dlugoscSferyczna += rest * neptun.okres;
+  }
+  //moveToDate(plusTime);
+
+  var k = 0;
+  function move(p) {
+    //p.element.style.visibility = "hidden"; dziala
+
+    p.dlugoscSferyczna += (1 / p.okres) * okres_obrotu_ziemi; //  TO JEST MOCNE
+    p.dlugoscSferyczna %= 360; // zeby po 360* sie zerowalo
+
+    var polozeniePoczatkoweRadianach = (p.dlugoscSferyczna * Math.PI) / 180; // zamianan na radiany
+
+    /*
+  if(Math.floor(p.dlugoscSferyczna) == 360) {
+    p.dlugoscSferyczna = 0;
+    if(p.nazwa == "Ziemia") {
+      k++;
+      console.log(k);
+    }
+  }
+
+  if(k == 49) {
+    return 0;
+  }
+  */
+
+    // radiany            //radiany     /okres
+    p.x =
+      p.centralne_x +
+      p.promien * nachylenie * Math.sin(polozeniePoczatkoweRadianach);
+    p.y = p.centralne_y + p.promien * Math.cos(polozeniePoczatkoweRadianach);
+
+    //1143  = 0
+    //561.7
+
+    //console.log("polozenie aktualne: ",p.x,p.y);
+
+    p.element.style.left = p.x + "px";
+    p.element.style.top = p.y + "px";
+    p.element.innerHTML =
+      p.nazwa +
+      "<br><small style='color: yellow'>" +
+      p.dlugoscSferyczna.toFixed(2) +
+      "°</small>";
+    //console.log("1 move");
+  }
+  var odswiezanie = 0.001; //s
+  var tick = 1000 * odswiezanie; //ms
+  var counter = 0;
+  var deegree = 0;
+
+  move(merkury);
+  move(wenus);
+  move(ziemia);
+  move(mars);
+  move(jowisz);
+  move(saturn);
+  move(uran);
+  move(neptun);
+
+  var petla = setInterval(function() {
+    deegree += odswiezanie / 3600;
+    counter += tick / 10; //ms
+
+    move(merkury);
+    move(wenus);
+    move(ziemia);
+    move(mars);
+    move(jowisz);
+    move(saturn);
+    move(uran);
+    move(neptun);
+
+    czas.innerHTML = (Math.round(counter) / 100).toFixed(2);
+    //posix.innerHTML = (Date.now()/1000).toFixed(0);
+    //stopien.innerHTML = deegree.toFixed(4);
+    //lata.innerHTML = (deegree / 360).toFixed(0);
+  }, tick);
+</script>
