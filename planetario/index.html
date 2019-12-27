@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Planetario</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0px;
+        padding: 0px;
+        background-color:black;
+        overflow: hidden;
+      }
+      h1 {
+        font-family: Oswald;
+        font-size: 13rem;
+        color: white;
+        margin-top: 20%;
+        margin-bottom: none;
+        padding: none;
+      }
+   
+      #caption {
+        font-family: Oswald;
+        font-size: 1.6rem;
+        color: white;
+        margin: none;
+      }
+
+      .imagebox {
+        width: 40%;
+        height: 120vh;
+       background-color: black;
+        float: left;
+        background-image: url("background.jpg");
+        background-size: 140%;
+        background-repeat: no-repeat;
+        position:relative;
+        overflow: hidden;
+        animation-name: ambient_move;
+        animation-duration: 10s;
+        animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+        animation-direction: alternate-reverse;
+        animation-iteration-count:infinite;
+      
+      }
+      .formbox {
+        text-align: center;
+        z-index: 2;
+        float: right;
+        width: 60%;
+        height: 100vh;
+        background-color: black;
+        transition: 200ms;
+      }
+      .gobutton, .gobutton:hover, .gobutton:active, .gobutton:focus {
+        outline: 0;
+      }
+      input::-moz-focus-inner { 
+  border: 0; 
+}
+      .gobutton {
+        width: 400px;
+        height: 100px;
+        background-color: rgb(26, 142, 209);
+        color: white;
+        font-family: oswald;
+        font-weight: 800;
+        font-size: 50px;
+        border: none;
+        border: 5px solid rgb(26, 142, 209);
+        transition: 100ms;
+        
+      }
+      .gobutton:hover {
+        background-color: black;
+        border: none;
+        border-bottom: 5px solid white;
+        transform: scale(1.06);
+        transition: 100ms;
+      }
+      .gobutton:active {
+        border: none;
+        border-bottom: 5px solid rgb(26, 142, 209);
+        
+      }
+  
+
+      .formbox:hover {
+        transform: translateX(-100px);
+        transition: 200ms;
+      }
+      @keyframes ambient_move {
+        from {
+          transform: translateY(-90px);
+        }
+        to {
+          transform: translateY(0px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="imagebox"></div>
+    <div class="formbox">
+      <h1>PLANET<font style="color:rgb(26, 142, 209);">ARIO</h1>
+      <form>
+        <p id="caption">
+          Real-time solar system simulation engine made by group of 3
+          students of University of Lodz
+        </p>
+        <input type="button" value="START HERE" class="gobutton" />
+
+
+      </form>
+      <script type="text/javascript">
+      function fun() {
+        
+      }
+        var btn = document.querySelector(".gobutton");
+
+        btn.addEventListener("click",fun);
+      </script>
+    </div>
+  </body>
+</html>
