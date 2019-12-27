@@ -43,7 +43,7 @@
 </div>
 
 <div id="parametry">
-  Czas <text id="czas"></text>s<br />
+  czas animacji <text id="czas"></text>s<br />
   POSIX <text id="posix"></text>s<br />
   Stopnie <text id="stopien"></text>°<br />
   Lata <text id="lata"></text>lat<br />
@@ -147,7 +147,19 @@
     z-index: 3;
   }
   .orbit {
-    border: dashed 2px #777;
+    animation-name: circular-move;
+    animation-duration: 160s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    border: dashed 2px #666;
+  }
+  @keyframes circular-move {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
 
   #sun {
@@ -194,6 +206,7 @@
 
   #parametry {
     background-color: #777;
+    width: 17%;
   }
 </style>
 
