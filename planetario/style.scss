@@ -3,7 +3,15 @@
 $accent: rgb(26, 142, 209);
 h1 {
   color: white;
+  margin-left: 3vh;
+  font-size: 5vw;
   font-family: Oswald, sans-serif;
+  i {
+    margin-left: 16vh;
+    font-weight: 100;
+    color: $accent;
+    font-size: 3vw;
+  }
 }
 button::-moz-focus-inner {
   /* zeby nie bylo na przyciskach kropkowanej granicy*/
@@ -44,12 +52,13 @@ button::-moz-focus-inner {
   border-radius: 3%;
 }
 .btn:hover {
-  background-color: rgb(160, 52, 145);
+  background-color: $accent;
+  border: 5px solid $accent;
   color: rgb(255, 255, 255);
 }
 .btn:active {
   background-color: rgb(255, 255, 255);
-  color: rgba(124, 49, 139, 0.616);
+  color: $accent;
 }
 
 body {
@@ -168,28 +177,33 @@ label {
     overflow-y: auto;
   }
   .space {
-    margin-top: 10vh;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
     position: relative;
     width: 100vw;
     height: 100vw;
 
     background-color: black;
     .planet {
-      font-size: 1.4vh;
+      font-size: 1.7vh;
       color: white;
     }
     .orbit {
       animation: none;
-      border-color: $accent;
+      border-color: #222;
       position: absolute;
     }
   }
   .control-panel {
     position: relative;
+    padding: 1vh;
+    padding-top: 2vh;
+    padding-bottom: 3vh;
+    padding-left: 2.2vh;
 
     width: 100vw;
     height: auto;
-    background-color: black;
+    background-color: #111;
 
     button {
       display: inline;
@@ -198,13 +212,13 @@ label {
       justify-content: center;
       align-content: center;
       font-size: 1.6vh;
-      border-radius: 100%;
-      border: 5px solid $accent;
-      background-color: black;
+      border-radius: 0%;
+      border: 10px solid #222;
+      background-color: #222;
       margin: none;
       transition: 250ms;
     }
-    button:hover {
+    button:active {
       color: $accent;
       background-color: black;
       border: 30px solid white;
@@ -213,13 +227,49 @@ label {
   }
 
   #parametry {
+    padding-left: 3vh;
+    padding-top: 2vh;
+    padding-bottom: 3vh;
     position: relative;
 
     background-color: #222;
     width: 100vw;
-    height: 20vh;
+    height: auto;
 
     font-size: 4vw;
     font-family: Oswald, sans-serif;
+    text {
+      position: absolute;
+      right: 10vh;
+      color: $accent;
+    }
+    .unit {
+      position: absolute;
+      right: 8vh;
+      color: white;
+    }
+    #ms {
+      right: 7vh;
+    }
+    #timetravelbutton {
+      color: white;
+      border: none;
+      border: 4px solid white;
+      text-decoration: none;
+      background-color: #222;
+      width: 30vw;
+      height: 10vw;
+      font-family: Oswald, sans-serif;
+      font-size: 4vw;
+      margin-top: 1vh;
+      transition: 250ms;
+      outline: none;
+    }
+    #timetravelbutton:active {
+      transition: 250ms;
+      background-color: black;
+      border-color: $accent;
+      color: $accent;
+    }
   }
 }

@@ -1,7 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
 h1 {
   color: white;
+  margin-left: 3vh;
+  font-size: 5vw;
   font-family: Oswald, sans-serif;
+}
+
+h1 i {
+  margin-left: 16vh;
+  font-weight: 100;
+  color: #1a8ed1;
+  font-size: 3vw;
 }
 
 button::-moz-focus-inner {
@@ -43,13 +52,14 @@ button::-moz-focus-inner {
 }
 
 .btn:hover {
-  background-color: #a03491;
+  background-color: #1a8ed1;
+  border: 5px solid #1a8ed1;
   color: white;
 }
 
 .btn:active {
   background-color: white;
-  color: rgba(124, 49, 139, 0.616);
+  color: #1a8ed1;
 }
 
 body {
@@ -207,27 +217,32 @@ label {
     overflow-y: auto;
   }
   .space {
-    margin-top: 10vh;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
     position: relative;
     width: 100vw;
     height: 100vw;
     background-color: black;
   }
   .space .planet {
-    font-size: 1.4vh;
+    font-size: 1.7vh;
     color: white;
   }
   .space .orbit {
     -webkit-animation: none;
             animation: none;
-    border-color: #1a8ed1;
+    border-color: #222;
     position: absolute;
   }
   .control-panel {
     position: relative;
+    padding: 1vh;
+    padding-top: 2vh;
+    padding-bottom: 3vh;
+    padding-left: 2.2vh;
     width: 100vw;
     height: auto;
-    background-color: black;
+    background-color: #111;
   }
   .control-panel button {
     display: inline;
@@ -239,14 +254,14 @@ label {
     -ms-flex-line-pack: center;
         align-content: center;
     font-size: 1.6vh;
-    border-radius: 100%;
-    border: 5px solid #1a8ed1;
-    background-color: black;
+    border-radius: 0%;
+    border: 10px solid #222;
+    background-color: #222;
     margin: none;
     -webkit-transition: 250ms;
     transition: 250ms;
   }
-  .control-panel button:hover {
+  .control-panel button:active {
     color: #1a8ed1;
     background-color: black;
     border: 30px solid white;
@@ -254,12 +269,50 @@ label {
     transition: 250ms;
   }
   #parametry {
+    padding-left: 3vh;
+    padding-top: 2vh;
+    padding-bottom: 3vh;
     position: relative;
     background-color: #222;
     width: 100vw;
-    height: 20vh;
+    height: auto;
     font-size: 4vw;
     font-family: Oswald, sans-serif;
+  }
+  #parametry text {
+    position: absolute;
+    right: 10vh;
+    color: #1a8ed1;
+  }
+  #parametry .unit {
+    position: absolute;
+    right: 8vh;
+    color: white;
+  }
+  #parametry #ms {
+    right: 7vh;
+  }
+  #parametry #timetravelbutton {
+    color: white;
+    border: none;
+    border: 4px solid white;
+    text-decoration: none;
+    background-color: #222;
+    width: 30vw;
+    height: 10vw;
+    font-family: Oswald, sans-serif;
+    font-size: 4vw;
+    margin-top: 1vh;
+    -webkit-transition: 250ms;
+    transition: 250ms;
+    outline: none;
+  }
+  #parametry #timetravelbutton:active {
+    -webkit-transition: 250ms;
+    transition: 250ms;
+    background-color: black;
+    border-color: #1a8ed1;
+    color: #1a8ed1;
   }
 }
 /*# sourceMappingURL=style.css.map */
