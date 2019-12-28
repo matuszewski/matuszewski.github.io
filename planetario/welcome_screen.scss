@@ -1,0 +1,181 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald&display=swap");
+$accent: rgb(26, 142, 209);
+
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: $accent;
+}
+.ario {
+  color: $accent;
+}
+#madeby {
+  font-family: Oswald, sans-serif;
+  font-size: 12px;
+  color: white;
+  font-weight: 100;
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: black;
+  overflow: hidden;
+}
+h1 {
+  font-family: Oswald;
+  font-size: 14vh;
+  color: white;
+  margin-top: 20%;
+  margin-bottom: none;
+  padding: none;
+}
+
+#caption {
+  font-family: Oswald;
+  font-size: 3vh;
+  color: white;
+  margin: none;
+}
+
+.imagebox {
+  width: 40%;
+  height: 120vh;
+  background-color: black;
+  float: left;
+  background-image: url("background.jpg");
+  background-size: 140%;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+  animation-name: ambient_move;
+  animation-duration: 10s;
+  animation-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+}
+.formbox {
+  text-align: center;
+  z-index: 2;
+  float: right;
+  width: 60%;
+  height: 100vh;
+  background-color: black;
+  transition: 200ms;
+}
+.gobutton,
+.gobutton:hover,
+.gobutton:active,
+.gobutton:focus {
+  outline: 0;
+}
+input::-moz-focus-inner {
+  border: 0;
+}
+.gobutton {
+  width: 30%;
+  height: 10%;
+  background-color: $accent;
+  color: white;
+  font-family: Oswald;
+  font-weight: 800;
+  font-size: 200%;
+  border: none;
+  border: 5px solid $accent;
+  transition: 100ms;
+}
+.gobutton:hover {
+  background-color: black;
+  border: 5px solid black;
+  border-bottom: 5px solid white;
+  transform: scale(1.06);
+  transition: 100ms;
+}
+.gobutton:active {
+  border: none;
+  border: 5px solid black;
+  border-bottom: 5px solid $accent;
+}
+
+.formbox:hover {
+  transform: translateX(-100px);
+  transition: 200ms;
+}
+@keyframes ambient_move {
+  from {
+    transform: translateY(-90px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    background-color: black;
+
+    display: flexbox;
+    flex-direction: column;
+    overflow-y: auto;
+
+    .formbox {
+      width: 100%;
+
+      background: none;
+      clear: both;
+      #caption {
+        width: 60%;
+        margin: auto;
+        margin-bottom: 10%;
+        color: white;
+        font-size: 2vh;
+      }
+
+      .gobutton {
+        border: 4px solid white;
+
+        font-size: 100%;
+        width: 40vh;
+        height: 40vh;
+        border-radius: 490px;
+        background-image: url("background.jpg");
+        background-size: cover;
+
+        font-size: 10vw;
+
+        animation-name: pulse;
+        animation-iteration-count: infinite;
+        animation-duration: 2s;
+        animation-direction: alternate-reverse;
+        animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+      }
+      .gobutton:hover {
+        border: 40px solid $accent;
+      }
+
+      #madeby {
+        margin-top: 10%;
+      }
+    }
+    #title {
+      font-size: 16vw;
+    }
+    .formbox:hover {
+      transform: none;
+    }
+    .imagebox {
+      display: none;
+      clear: both;
+    }
+  }
+
+  @keyframes pulse {
+    from {
+      transform: scale(0.95);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}

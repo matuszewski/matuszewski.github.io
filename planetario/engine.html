@@ -1,19 +1,25 @@
-<meta charset="utf-8" />
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<header>
+  <h1>
+    PLANETARIO The Space Engine
+  </h1>
+</header>
 
-<div class="control-panel">
-  <h2>OBIEKTY</h2>
+<div id="parametry">
+  animation time <text id="czas"></text>s<br />
+  POSIX animation start time <text id="posixStart"></text>s<br />
 
-  <button class="btn">SŁOŃCE</button>
-  <button class="btn">MERKURY</button>
-  <button class="btn">WENUS</button>
-  <button class="btn">ZIEMIA</button>
-  <button class="btn">MARS</button>
-  <button class="btn">JOWISZ</button>
-  <button class="btn">SATURN</button>
-  <button class="btn">URAN</button>
-  <button class="btn">NEPTUN</button>
+  POSIX actual time <text id="posix"></text>s<br />
+  Refresh rate <text id="tickRate"></text>ms<br />
+
+  Stopnie <text id="stopien"></text>°<br />
+  Lata <text id="lata"></text>lat<br />
+  PROPORCJA<text id="proporcja"></text><br />
+  <button id="timetravelbutton">TIME TRAVEL!</button>
 </div>
-
 <div class="space">
   <div id="sun"></div>
 
@@ -42,178 +48,22 @@
   <div class="planet" id="Neptun"></div>
 </div>
 
-<div id="parametry">
-  czas animacji <text id="czas"></text>s<br />
-  POSIX <text id="posix"></text>s<br />
-  Stopnie <text id="stopien"></text>°<br />
-  Lata <text id="lata"></text>lat<br />
-  PROPORCJA<text id="proporcja"></text><br />
-  <button id="timetravelbutton">TIME TRAVEL!</button>
+<div class="control-panel">
+  <button class="btn">SŁOŃCE</button>
+  <button class="btn">MERKURY</button>
+  <button class="btn">WENUS</button>
+  <button class="btn">ZIEMIA</button>
+  <button class="btn">MARS</button>
+  <button class="btn">JOWISZ</button>
+  <button class="btn">SATURN</button>
+  <button class="btn">URAN</button>
+  <button class="btn">NEPTUN</button>
 </div>
-<style>
-  button::-moz-focus-inner {
-    /* zeby nie bylo na przyciskach kropkowanej granicy*/
-    border: 0;
-  }
-
-  .control-panel {
-    margin: none;
-    background-color: rgb(65, 65, 65);
-    padding: 3px;
-    height: 100vh;
-    overflow-y: auto;
-
-    visibility: visible;
-  }
-
-  .control-panel h2 {
-    margin: none;
-    font-family: sans-serif;
-    font-size: 17px;
-    margin-left: 10px;
-  }
-  .btn {
-    display: block;
-    margin: 10px;
-    background-color: rgb(83, 83, 83);
-    border: none;
-
-    padding: 20px;
-    width: 160px;
-    font-size: 13x;
-    font-family: sans-serif;
-    font-weight: 600;
-
-    color: white;
-    box-shadow: 1px 0px 4px rgba(0, 0, 0, 0.4);
-    outline: none;
-    transition-duration: 100ms;
-    border-radius: 3%;
-  }
-  .btn:hover {
-    background-color: rgb(160, 52, 145);
-    color: rgb(255, 255, 255);
-    transform: translateX(10px);
-    transition-duration: 100ms;
-  }
-  .btn:active {
-    background-color: rgb(255, 255, 255);
-    color: rgba(124, 49, 139, 0.616);
-  }
-
-  body {
-    overflow: hidden;
-    margin: 0px;
-    background-color: black;
-    color: white;
-
-    display: flex;
-    justify-content: left;
-    font-family: sans-serif;
-  }
-  label {
-    position: relative;
-    font-family: sans-serif;
-    left: 20px;
-    bottom: 20px;
-    font-size: 12px;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-    z-index: 3;
-  }
-
-  .space {
-    background-color: rgba(0, 0, 0, 1);
-    background-image: url("stars.jpg");
-    background-repeat: no-repeat;
-    background-size: 130%;
-
-    height: 100vh;
-    width: 70%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .space > div {
-    position: fixed;
-    border-radius: 100%;
-  }
-  .planet {
-    font-family: sans-serif;
-    left: 20px;
-    bottom: 20px;
-    font-size: 12px;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-    z-index: 3;
-  }
-  .orbit {
-    animation-name: circular-move;
-    animation-duration: 160s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    border: dashed 2px #666;
-  }
-  @keyframes circular-move {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  #sun {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: darkorange;
-    box-shadow: inset -30px -30px 30px rgba(0, 0, 0, 0.3);
-    /* border: 2px solid chartreuse;
-    border-radius: 0%; */
-  }
-  #Merkury {
-    position: absolute;
-    justify-content: center;
-
-    width: 8px;
-    height: 8px;
-    background-color: red;
-    box-shadow: inset -30px -30px 30px rgba(0, 0, 0, 0.2);
-    /* border: 2px solid chartreuse;
-    border-radius: 0%; */
-  }
-  #Wenus {
-    position: absolute;
-
-    width: 14px;
-    height: 10px;
-    background-color: darkorange;
-    box-shadow: inset -30px -30px 30px rgba(0, 0, 0, 0.2);
-    /* border: 2px solid chartreuse;
-    border-radius: 0%; */
-  }
-  #Ziemia {
-    position: absolute;
-
-    width: 23px;
-    height: 23px;
-    background-color: lightblue;
-
-    box-shadow: inset -30px -30px 30px rgba(0, 0, 0, 0.2);
-    /* border: 2px solid chartreuse;
-    border-radius: 0%; */
-  }
-
-  #parametry {
-    background-color: #777;
-    width: 17%;
-  }
-</style>
 
 <script type="text/javascript">
   // nazwa, masa, srednica, okresObiegu, okresObrotu, polozeniePoczatkowe, ciekawostki
-
-  var nachylenie = 1;
+  var scale = 1.4;
+  var tilt = 1;
   var czas = document.querySelector("#czas");
   var posix = document.querySelector("#posix");
   var stopien = document.querySelector("#stopien");
@@ -296,8 +146,8 @@
   }
 
   function genereateOrbit(p) {
-    p.elementOrbit.style.width = nachylenie * p.promien * 2 + "px";
-    p.elementOrbit.style.height = p.promien * 2 + "px";
+    p.elementOrbit.style.width = tilt * p.promien * 2 * scale + "px";
+    p.elementOrbit.style.height = p.promien * 2 * scale + "px";
   }
 
   function showLabel(p) {
@@ -556,8 +406,10 @@
     // radiany            //radiany     /okres
     p.x =
       p.centralne_x +
-      p.promien * nachylenie * Math.sin(polozeniePoczatkoweRadianach);
-    p.y = p.centralne_y + p.promien * Math.cos(polozeniePoczatkoweRadianach);
+      p.promien * scale * tilt * Math.sin(polozeniePoczatkoweRadianach);
+    p.y =
+      p.centralne_y +
+      p.promien * scale * Math.cos(polozeniePoczatkoweRadianach);
 
     //1143  = 0
     //561.7
@@ -568,7 +420,7 @@
     p.element.style.top = p.y + "px";
     p.element.innerHTML =
       p.nazwa +
-      "<br><small style='color: yellow'>" +
+      "<br><small style='color: rgb(26, 142, 209)'>" +
       p.dlugoscSferyczna.toFixed(2) +
       "°</small>";
     //console.log("1 move");
@@ -587,6 +439,12 @@
   move(uran);
   move(neptun);
 
+  var posixStart = document.querySelector("#posixStart"); //zapisuje aktualny czas poczatku animacji
+  posixStart.innerHTML = (Date.now() / 1000).toFixed(0);
+
+  var tickRate = document.querySelector("#tickRate"); //zapisuje aktualny czas poczatku animacji
+  tickRate.innerHTML = tick;
+
   var petla = setInterval(function() {
     deegree += odswiezanie / 3600;
     counter += tick / 10; //ms
@@ -600,9 +458,9 @@
     move(uran);
     move(neptun);
 
-    czas.innerHTML = (Math.round(counter) / 100).toFixed(2);
-    //posix.innerHTML = (Date.now()/1000).toFixed(0);
-    //stopien.innerHTML = deegree.toFixed(4);
-    //lata.innerHTML = (deegree / 360).toFixed(0);
+    czas.innerHTML = (Math.round(counter) / 10).toFixed(1);
+    posix.innerHTML = (Date.now() / 1000).toFixed(0);
+    stopien.innerHTML = deegree.toFixed(4);
+    lata.innerHTML = (deegree / 360).toFixed(0);
   }, tick);
 </script>
