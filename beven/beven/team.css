@@ -1,0 +1,114 @@
+.team {
+ height: 90vh;
+ width: 100%;
+
+ padding-top: 10%;
+ padding-bottom: 100vh;
+}
+.team h2 {
+    text-transform: uppercase;
+    color: #222;
+    margin-bottom: 10vh;
+}
+.team-container {
+    width: 81vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    
+}
+
+.member {
+    height: 60vh;
+    width: 48vh;
+    border-radius: 3%;
+    background-color: rgb(18, 4, 80);
+    box-shadow: 2px 2px 16px rgb(221, 221, 221);
+    transition: 500ms;
+    padding-bottom: 3%;
+}
+.member h4, .member p {
+    color: white;
+    margin: 0px;
+    text-align: right;
+    margin-left: 10%;
+    margin-right: 10%;
+    transition: 100ms;
+
+}
+.member h4 {
+    font-weight: 600;
+    margin-top: 10%;
+    font-size: 1.6rem;
+}
+
+.mail {
+    margin: 0px;
+    font-size: 1.3rem ;
+    opacity: 0;
+    transition: 100ms;
+    
+    color: white;
+    font-style: italic;
+    font-weight: 600;
+
+    
+}
+.member-photo { 
+    width: 100%;
+    height: 70%;
+    border-top-left-radius: 3%;
+    border-top-right-radius: 3%;
+    background-color: aliceblue;
+    background-image: url("box01.jpg");
+    background-size: cover;
+    background-position: center;
+    transition: 100ms;
+}
+.member:hover > .mail {
+    
+    
+    opacity: 1;
+    color: rgb(221, 70, 43);
+    transition: 100ms;
+
+}
+.member:hover {
+    background-color: black;
+}
+
+.member:hover > .member-photo {
+    transform: translateY(-5%);
+    transition: 100ms;
+}
+.member:hover > h4 {
+    transform: translateY(-80%);
+    transition: 100ms;
+}
+.member:hover > p {
+    transform: translateY(20%);
+    transition: 100ms;
+}
+
+
+.member:active {
+    background-color: white;
+
+}
+.member:active > h4 {
+    color: black;
+    
+    transition: 500ms;
+}
+
+.member:active > p {
+    color: black;
+    transition: 500ms;
+
+}
+
+.member:active > .member {
+    
+}

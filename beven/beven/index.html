@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,900&display=swap" rel="stylesheet">
+    <link href="team.css" rel="stylesheet">
+    <link href="slider.css" rel="stylesheet">
+    <link href="box-container.css" rel="stylesheet">
+    <title>Title</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body { margin: 0px;}
+        h1,h2,h3,h4,h5,h6,p {
+           
+            margin: 0;
+            margin-left: 9vw;
+            color: white;
+            font-family: Montserrat;
+        }
+        h1 { font-size: 5rem; font-weight: 400; }
+        h2 { font-size: 2.3rem; font-weight: 900    ;}
+        h3 {}
+        h4 {}
+        h5 {}
+        h6 {}
+        p  { font-size: 1.2rem; color: black; font-weight: 100;}
+        nav {
+            width: 100%;
+            height: 20vh;
+            background-color: black;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            
+        }
+        nav p {
+            text-transform: uppercase;
+            font-weight: 600;
+            
+        }
+       .title {
+           width: 70vw;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+       }
+       .menu {
+           padding-right: 10vw;
+
+            padding-top: 10vh;
+           display: flex;
+           flex-direction: row;
+           justify-content: space-around;
+           
+       }
+       .menu p { color: white;            transition: 140ms; cursor: pointer;
+}
+       .menu p:hover {
+        transition: 140ms;
+            
+           color: purple;
+       }
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+       
+
+
+
+
+
+        footer {
+            width: 100%;
+            height: 80vh;
+            background-color: black;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+
+        }
+        
+        
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <script>
+        function hideMenu() {
+            var menu = document.querySelector(".menu");
+            menu.style.visibility = "hidden";
+            var banner = document.querySelector("nav");
+            banner.style.visibility = "hidden";
+        }
+
+        function sketch() {
+       
+            var banner = document.querySelector("nav");
+            banner.style.width = "39.58vw";
+            banner.style.backgroundColor = "rgb(26, 26, 76)";
+            var menu = document.querySelector(".menu");
+            menu.style.visibility = "hidden";
+        }
+    </script>
+    <nav>
+      <div class="title">
+        <h2 onclick="hideMenu();">BEVEN</h2>
+      </div>
+      <div class="menu">
+          <p>Projects</p>
+          <p>Contact</p>
+          <p>Jobs</p>
+          <p>Language</p>
+      </div>
+    </nav>
+
+    <section class="slider">
+        <div class="slider-descriptions">
+            <h2>SOFTWARE HOUSE</h2>
+            <p>Designed with passion</p>
+
+        </div>
+        <div class="slider-player">
+            <div class="player" onclick="sketch();">
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="box-container">
+        <div class="box" style="background-image: url('a.jpg')">
+            <div class="caption">
+                <h3>STOCKS</h3>
+            </div>
+        </div>
+        <div class="box" style="background-image: url('b.jpg')">
+            <div class="caption">
+                <h3>BEVEN</h3>
+            </div>
+        </div>
+        <div class="box" style="background-image: url('c.jpg')">
+            <div class="caption">
+                <h3>MONOLITE</h3>
+            </div>
+        </div>
+        <div class="box" style="background-image: url('d.jpg')">
+            <div class="caption">
+                <h3>SOMA</h3>
+            </div>
+        </div>
+        <div class="box" style="background-image: url('e.jpg')">
+            <div class="caption">
+                <h3>SWAMP II</h3>
+            </div>
+        </div>
+        <div class="box" style="background-image: url('f.jpg')">
+            <div class="caption">
+                <h3>HEAVY</h3>
+            </div>
+        </div>
+        
+
+        <div class="more-toggler">
+            <h3 class="show-more">SHOW MORE</h3>
+        </div>
+    </section>
+
+
+
+
+
+    <section class="team">
+        <h2>Meet our team</h2>
+        <div class="team-container">
+            <div class="member">
+                <div class="member-photo">
+    
+                </div>
+                <h4>Mario Balotelli</h4>
+                <p class="mail">balotelli@beven.com</p>
+
+                <p>FullStack Developer, DevOps manager</p>
+            </div>
+
+            <div class="member">
+                <div class="member-photo">
+    
+                </div>
+                <h4>Jacobs Kronung</h4>
+                <p class="mail">jacobs@beven.com</p>
+                <p>Backend Developer and deployment specialist</p>
+            </div>
+
+            <div class="member">
+                <div class="member-photo">
+    
+                </div>
+                <h4>Sasha Davay</h4>
+                <p class="mail">dayedoope@beven.com</p>
+
+                <p>Lady Frontend, Designer</p>
+            </div>
+            
+        </div>
+       
+    </section>
+
+    <footer>
+        <h4>CONTACT</h4>
+        <h4>AUDIT</h4>
+    </footer>
+</body>
+</html>

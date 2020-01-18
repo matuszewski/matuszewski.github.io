@@ -1,0 +1,38 @@
+.slider {width:100%; background-color: white; color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;}
+    .slider-descriptions, .slider-player {
+        display: flex;
+    flex-direction: column;
+    justify-content: center;
+    }
+    .slider-descriptions {
+        width: 40vw;
+        height: 40vw;
+        background-color: white;
+        
+
+    }
+    .slider .slider-descriptions h2 { color:#222 }
+    .slider-player { width: 40vw; height: 40vw; background-color: #F3F3F3}
+    .player {
+        background-color: white;
+        width: 30vw;
+        height: 30vw;
+        margin: auto;
+       
+        box-shadow: 2px 2px 20px #DDD;
+        background-image: url("box01.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        transition: 200ms;
+
+    }
+    .player:hover {
+        transform: scale(1.04);
+        opacity: 0.9;
+        transition: 200ms;
+    }
+    
