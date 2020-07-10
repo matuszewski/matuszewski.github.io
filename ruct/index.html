@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>RUCT</title>
+    <script type="text/javascript" language="javascript" src="logic.js"></script>
+    <script>
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (prevScrollpos > currentScrollPos) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-10%";
+            }
+            prevScrollpos = currentScrollPos;
+        } 
+    </script>
+</head>
+<body>
+
+
+    <header id="navbar">
+            <h1>RUCT</h1>
+            <p>Realy useful container tools</p>
+    </header>
+
+    <section>
+        <h2 id="ttl">BRIEF</h2>
+
+        <p id="dsc"><b>RUCT</b><br>This is a simple expositive Github project site dedicated to RUCT - a growing repository which consist of scripts and programs that helps you with managing your containers. <br>
+            The problem that coused the intention seems to be simple to understand. Containerization is quickly becoming a trend which causes it to be used even when it is not supposed to.<br> For that use cases those scripts may be really helpful.
+        </p><br>
+
+        <h1 id="ttl2">DOWNLOADS</h1>
+    </section>
+    
+    <section>
+
+        <div class="banner"><h1>Podman tools</h1></div>
+
+        <div class="box" onclick="go('loader');">
+            <h3>Loader</h3>
+            <p>Load many image archives to podman as images</p>
+        </div>
+
+        <div class="box" onclick="go('monitor');">
+            <h3>Monitor</h3>
+            <p>Real-time monitor for podman images and containers</p>
+        </div>
+        <div class="box" onclick="go('remover');">
+            <h3>Remover</h3>
+            <p>Remove all podman containers, images or reset configuration</p>
+        </div>
+
+
+        <div class="banner"><h1>Docker tools</h1></div>
+
+        <div class="box docker" onclick="go('exporter');">
+            <h3 class="blue">Exporter</h3>
+            <p>Quickly export all or specified docker images to archives</p>
+        </div>
+
+
+        <div class="banner "><h1>Kubernetes tools</h1></div>
+
+        <div class="box kubernetes" onclick="go();">
+            <h3 class="darkblue">Comming Soon!</h3>
+            <p>More automation and making life easier</p>
+        </div>
+
+
+
+        
+    </section>
+
+    <aside>
+                    <h3>TABLE OF CONTENTS</h3>
+
+        <ul>
+            <br><br>
+
+            <li>DOCKER</li>
+                <ul>
+                    <li>Exporter</li>
+                        <ul>
+                            <li>single tar</li>
+                            <li>multi tar</li>
+                            <li>many tars</li>
+                        </ul>
+                </ul>
+                <br><br>
+            <li>PODMAN</li>
+                <ul>
+                    <li>Loader</li>
+                    <ul>
+                        <li>single tar</li>
+                        <li>many tars</li>
+                    </ul>
+                    <li>Monitor</li>
+                        <ul>
+                            <li>one host</li>
+                            <li>multi host</li>
+                            <li>images</li>
+                            <li>containers</li>
+                            <li>specific</li>
+                        </ul>
+                    <li>Remover</li>
+                        <ul>
+                            <li>one image</li>
+                            <li>one container</li>
+                            <li>many images</li>
+                            <li>many containers</li>
+                            <li>purge</li>
+                            <li>reset config</li>
+                            <li>kill all</li>
+                        </ul>
+                </ul>
+            
+        </ul>
+    </aside>
+
+    <footer>
+        <p>Created by Chris Matushevsky</p>
+        <a class="gh" href="https://github.com/matuszewski">@matuszewski at GitHub.com</a>
+    </footer>
+    
+</body>
+</html>

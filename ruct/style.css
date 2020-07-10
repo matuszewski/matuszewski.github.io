@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+* { box-sizing: border-box; overflow-x: hidden;}
+body { margin: 0px;
+ display: flex;
+ flex-wrap: wrap;
+ color: white;
+ overflow-x: hidden;
+}
+a {
+    font-family: Poppins, sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 80%;
+    
+}
+#ttl {
+    text-align: left;
+    padding-top: 0%;
+    padding-left: 2%;
+}
+#ttl2 {
+    text-align: left;
+    padding-top: 0%;
+    padding-bottom: 3%;
+    padding-left: 2%;
+}
+
+#dsc {
+    margin: 10%;
+    justify-content: center;
+    text-align: justify;
+}
+footer p {
+    margin: 0px;
+    color:white
+}
+
+header {
+    width: 100%;
+    height: auto;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    font-family: Poppins;
+    justify-content: left; /*lewo prawo*/
+    align-items: center; /* gora dol*/
+    color: white;
+    padding-left: 2%;
+    position: fixed;
+    transition: 200ms;
+}
+
+header h1 {
+    padding: 0px;
+    font-size: 2rem;
+    font-weight: 900;
+    padding-right: 1%;
+}
+nav {
+    margin-left: 2%;
+    padding: 10px;
+    width: 50%;
+    height: 50%;
+    background-color: rgb(127, 0, 153);
+}
+section {
+    width: 80%;
+    height: auto;
+    background-color: black;
+    padding: 1%;
+    padding-top: 10%;
+    display: flex;
+    justify-content: left;
+
+    flex-wrap: wrap;
+}
+.title {
+    padding-left: 2%;
+    font-size: 3rem;
+    text-align: justify;
+}
+.box {
+    width: 29%;
+    height: 200px;
+    margin: 2%;
+    padding: 3%;
+    padding-top: 1%;
+
+    background-color: #111;
+    border-bottom: 30px solid rgb(127, 0, 153);
+    color: #bbb;
+
+    transition: 300ms;
+}
+.box:hover {
+    color: white;
+    border-bottom: 0px solid rgb(64, 0, 77);
+
+    background-color: #222;
+    transition: 300ms;
+}
+.box h3 {
+    color: rgb(127, 0, 153);
+}
+.box:active {
+    transition: 10ms;
+    color: darkgray;
+    transform: scale(1.02);
+}
+
+.banner {
+    width: 100%;
+    margin: 2%;
+    height: 40px;
+    
+}
+.banner h1 {
+    margin: 0px;
+    font-family: Poppins;
+
+}
+
+
+
+aside {
+    width: 20%;
+    height: auto;
+    background-color: rgb(17, 17, 17);
+    padding: 20px;
+    padding-top: 10%;
+}
+aside ul {
+    font-family: Poppins;
+    padding-left: 20%;
+}
+
+aside ul li {
+    list-style-type: none;
+    line-height: 200%;
+    
+}
+aside h3 {
+    text-align: center;
+}
+footer {
+    width: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    
+    background-color: black;
+    padding-left: 83%;  
+  
+}
+
+
+p, h1, h2, h3, h4, h5, h6 {
+    font-family: Poppins, sans-serif;
+}
+
+
+
+@media (max-width: 900px) {
+    aside {
+      display: none;
+    }
+    section {
+        width: 100%;
+    }
+    section .box {
+        width: 45%;
+        align-content: space-around;
+        justify-content: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    h1 {
+        color: #222;
+    }
+    #navbar h1 {
+        margin-left: 10%;
+        color: #EEE;
+        margin-right: 10%;
+    }
+    aside {
+      display: none;
+    }
+    section {
+        color: black;
+        width: 100%;
+        justify-content: center;
+        background-color: #DDD;
+    }
+    section .box {
+        width: 80%;
+        padding-top: 6%;
+        margin-bottom: 10%;
+        padding-left: 10%;
+        padding-right: 10%;
+        padding-bottom: 6%;
+        overflow: hidden;
+    }
+    .title {
+        padding: 0px;
+        padding-top: 10%;
+        text-align: center;
+
+    }
+
+    .banner h1 {
+        padding-left: 10%;
+    }
+
+    .blue {
+        color: rgb(65, 176, 240) !important;
+    }
+    .darkblue {
+        color: rgb(50, 87, 248) !important;
+    }
+    .docker {
+        border-color: rgb(65, 176, 240);
+    }
+    .kubernetes {
+        border-color: rgb(50, 87, 248);
+    }
+
+    footer {
+        padding: 0px;
+        background-color: black;
+        padding-top: 6%;
+        padding-bottom: 4%;
+        text-align: center;
+
+    }
+    footer p {
+        padding: 0px;
+        text-align: center;
+    }
+    footer .gh {
+        padding: 0px;
+        text-align: center;
+        margin: 0px;
+        clear: both;
+    }
+
+
+    #ttl {
+        text-align: left;
+        padding-top: 25%;
+    }
+    #ttl2 {
+        padding-top: 15%;
+    }
+  }
