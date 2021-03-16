@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  font-family: Arial;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  padding: 12px;
+}
+
+.column img:hover {
+  opacity: 0.8;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+</style>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>Responsive Image Grid</h1>
+  <p>Resize the browser window to see the responsive effect.</p>
+</div>
+
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+
+    <img src="images/2011_05_14_alastor_4d.jpg" style="width:100%">
+    <img src="images/2011_05_14_alastor_5d.jpg" style="width:100%">
+    <img src="images/2011_05_14_alastor_6d.jpg" style="width:100%">
+    <img src="images/2011_05_14_alastor_7d.jpg" style="width:100%">
+
+  </div>
+  <div class="column">
+    <img src="images/2011_05_14_alastor_8d.jpg" style="width:100%">
+    <img src="images/2011_05_14_alastor_9d.jpg" style="width:100%">
+    <img src="images/2011_05_14_alastor_10d.jpg" style="width:100%">
+    <img src="images/2011_05_14_alastor_11d.jpg" style="width:100%">
+    <img src="images/2011_05_14_alastor_12d.jpg" style="width:100%">
+    <img src="images/2011_05_14_alastor_13d.jpg" style="width:100%">
+    <img src="images/2011_05_14_alastor_14d.jpg" style="width:100%">
+  </div>  
+  <div class="column">
+    <img src="_DSC9390.jpg" style="width:100%">
+    <img src="_DSC9337.jpg" style="width:100%">
+    <img src="_DSC9348.jpg" style="width:100%">
+    <img src="_DSC9352.jpg" style="width:100%">
+    <img src="_DSC9367.jpg" style="width:100%">
+    <img src="_DSC9363.jpg" style="width:100%">
+    <img src="_DSC9359.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="_DSC9364.jpg" style="width:100%">
+    <img src="_DSC9366.jpg" style="width:100%">
+    <img src="_DSC9394.jpg" style="width:100%">
+    <img src="_DSC9400.jpg" style="width:100%">
+    <img src="_DSC9369.jpg" style="width:100%">
+    <img src="_DSC9372.jpg" style="width:100%">
+    <img src="_DSC9375.jpg" style="width:100%">
+  </div>
+</div>
+
+</body>
+</html>
